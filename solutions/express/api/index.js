@@ -68,6 +68,7 @@ app.post('/api', (req, res) => {
       'Content-Type': 'application/json',
       'X-Idempotency-Key': Math.random(),
       Authorization: `Bearer ${getAT()}`,
+      ...req.body.env === 'beta' && {'X-Scope': 'omega'}
     },
     data: data,
   }
